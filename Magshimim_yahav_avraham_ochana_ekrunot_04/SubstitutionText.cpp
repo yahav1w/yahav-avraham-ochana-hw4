@@ -1,6 +1,7 @@
 #include "SubstitutionText.h"
 #include <fstream>
 
+//constoractor
 SubstitutionText::SubstitutionText(const std::string text, const std::string dictionaryFileName):PlainText(text)
 {
 	_dictionaryFileName = dictionaryFileName;
@@ -8,10 +9,15 @@ SubstitutionText::SubstitutionText(const std::string text, const std::string dic
 	_isEncrypted = true;
 }
 
+//d'tor
 SubstitutionText::~SubstitutionText()
 {
 }
 
+//the function encrypt some text by file instraction
+//text - the text to encrypt
+//dictionaryFileName - the file with the instruction hoe to encrypt
+//return the encrypt massage
 std::string SubstitutionText::encrypt(std::string text, std::string dictionaryFileName)
 {
 	std::string line;
@@ -39,6 +45,10 @@ std::string SubstitutionText::encrypt(std::string text, std::string dictionaryFi
 	return text;
 }
 
+//the function decrypt some text by file instraction
+//text - the text to decrypt
+//dictionaryFileName - the file with the instruction hoe to decrypt
+//return the decrypt massage
 std::string SubstitutionText::decrypt(std::string text, std::string dictionaryFileName)
 {
 	std::string line;
@@ -66,6 +76,8 @@ std::string SubstitutionText::decrypt(std::string text, std::string dictionaryFi
 	return text;
 }
 
+//the function encrypt the text from the higher classes by the file of the class
+//return the encrypt massage
 std::string SubstitutionText::encrypt()
 {
 	if (!_isEncrypted)
@@ -76,6 +88,8 @@ std::string SubstitutionText::encrypt()
 	return _text;
 }
 
+//the function decrypt the text from the higher classes by the file of the class
+//return the decrypt massage
 std::string SubstitutionText::decrypt()
 {
 	if (_isEncrypted)
@@ -87,6 +101,10 @@ std::string SubstitutionText::decrypt()
 }
 
 
+//operator to print the class by using output standart methode
+//a - the standart output stream
+//text - the SubstitutionText class that contain text to return
+//return an explanation about the kind of encrypt and the message
 std::ostream& operator<<(std::ostream& a, const SubstitutionText& text)
 {
 	std::string kind = "Substitution\n\n";
